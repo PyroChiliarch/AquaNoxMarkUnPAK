@@ -3,3 +3,5 @@
 *.dproj
 *.local
 *.identcache
+*.des
+*.exe
