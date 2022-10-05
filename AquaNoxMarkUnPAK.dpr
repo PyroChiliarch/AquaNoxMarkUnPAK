@@ -12,50 +12,14 @@
              Supported: AquaNox, AquaNox 2 - Revelation, AquaMark 3
                  Fixes: AquaMark 3 support, small code cleanup.
 ================================================================================
-Формат архива PAK by Massive Development (.pak):
-(Описание пока только для AquaNox)
-Структура архива:
-  1. Заголовок
-  2. Таблица имен и размеров файлов
-  3. Данные файлов
-
-Заголовок:
-  TPAKHeader = packed record
-    Signature  : array[0..11] of AnsiChar; // Сигнатура
-    Version    : cardinal;                 // Версия архива
-    NumItems   : cardinal;                 // Количество файлов в архиве
-    Description: array[0..59] of AnsiChar; // Описание или копирайт
-    Unknown    : array[0..03] of AnsiChar; // Неизвестно
-  end;
-  Для AquaNox:
-    Signature   = "MASSIVEFILE#0"
-    Version     = 3.0 (0x00000003)
-    Description = "Copyright by Massive Development GmbH. All rights reserved.#0"
-    Unknown     = "LPT#0" (0x0054504c)
-  Для AquaNox 2 - Revelation:
-    Signature   = "MASSIVEFILE#0"
-    Version     = 3.2 (0x00020003)
-    Description = "Copyright by Massive Development GmbH. All rights reserved.#0"
-    Unknown     = 0x00
-  Для AquaMark 3:
-    Signature   = "MASSIVEFILE#0"
-    Version     = 3.3 (0x00030003)
-    Description = "Copyright by Massive Development GmbH. All rights reserved.#0"
-    Unknown     = 0x00
-
-Таблица имен и размеров файлов:
-  Количество элементов в таблице определяется полем NumItems заголовка. В каждом
-  элементе записаны имя файла и его размер. Для имени файла всегда отводится 128
-  байт,  для  размера  файла - 4  байта (тип  Cardinal).  И имя  файла и  размер
-  зашифрованы. Ключ (размер 64 байта) лежит в выполняемом файле:
-    Aqua.exe - смещение 0x0023c4f0 (версия 1.18oem Feb 1 2002 15:28:45)
-  Алгоритм дешифрации см. в функциях DecryptData и DecryptItemSize.
-  В таблице отсутствует информация о смещениях данных файлов, поэтому приходится
-  вычислять. Для первого файла: смещение = размер_заголовка + размер_таблицы.Для
-  остальных: смещение = смещение_предыдущего_файла + размер_предыдущего_файла.
-
-Данные файлов:
-  Данные файлов записаны сразу после таблицы имен. Не упакованы и не зашифрованы.
+                           AquaNox PAK Archives Extractor
+                                  Version  1.2
+                    AquaNox / AquaMark PAK Archives Extractor
+            Updated by PyroChiliarh https://github.com/PyroChiliarch/
+             Supported: AquaNox, AquaNox 2 - Revelation, AquaMark 3
+           Fixes:
+            - Updated source to build in Delphi 10.4 Community IDE
+            - Removed broken comments
 ================================================================================}
 Program AquaNoxMarkUnPAK;
 {$APPTYPE CONSOLE}
@@ -90,7 +54,7 @@ Var
   AppName, RootDir: string;
   DecryptNameProc: TDecryptNameProc;
   DecryptSizeProc: TDecryptSizeProc;
-          FileDir: pchar;
+          FileDir: PAnsiChar;
 
 begin
   // Show title
