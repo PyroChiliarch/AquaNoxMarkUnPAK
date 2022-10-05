@@ -58,10 +58,10 @@ Var
 
 begin
   // Show title
-  WriteLn('AquaNox / AquaMark PAK Archives Extractor v1.1 by CTPAX-X Team');
+  WriteLn('AquaNox / AquaMark PAK Archives Extractor v1.2');
   WriteLn('Supported: AquaNox, AquaNox 2 - Revelation, AquaMark 3');
-  WriteLn('(c) CTPAX-X Team 2009');
-  WriteLn('http://www.CTPAX-X.ru/');
+  WriteLn('Updated by PyroChiliarch, details in repository below');
+  WriteLn('https://github.com/PyroChiliarch/AquaNoxMarkUnPAK-v1.2');
   WriteLn;
   if ParamCount<1 then begin
     WriteLn('Usage: AquaNoxMarkUnPAK.exe <filename or filemask> - extract all files');
