@@ -34,7 +34,7 @@ Procedure AN1DecryptName(Var aData: array of ansichar; szData, Num: integer);
 Var k: byte;
 begin
   for k:=0 to szData-1 do begin
-    aData[k]:=Chr(Ord(aData[k])-AN1Key[($00+Num+k) mod szKey]);
+    aData[k]:=AnsiChar(Ord(aData[k])-AN1Key[($00+Num+k) mod szKey]);
   end;
 end;
 
@@ -49,7 +49,7 @@ Procedure AN2DecryptName(Var aData: array of ansichar; szData, Num: integer);
 Var k: byte;
 begin
   for k:=0 to szData-1 do begin
-    aData[k]:=Chr(Ord(aData[k])-AN2Key[($3d+Num+k) mod szKey]);
+    aData[k]:=AnsiChar(Ord(aData[k])-AN2Key[($3d+Num+k) mod szKey]);
   end;
 end;
 
@@ -68,7 +68,7 @@ Var
 begin
   InitVal:=((integer($FFFFFFE3) - ($1F * Num)) xor integer($FFFFFFE5)) and $3F;
   for k:=0 to szData-1 do
-    aData[k]:=Chr(Ord(aData[k])-AM3Key[(InitVal+k) mod szKey]);
+    aData[k]:=AnsiChar(Ord(aData[k])-AM3Key[(InitVal+k) mod szKey]);
 end;
 
 // fixed by Axsis 2009.12.21
