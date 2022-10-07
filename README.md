@@ -1,4 +1,8 @@
 # AquaNoxMarkUnPAK
+
+**I suggest you use the new tool with many more features here**
+**https://github.com/PyroChiliarch/AquanoxRePAK**
+
 .pak Unpacker for Aquanox, Aquanox 2: Revelation, Aquamark 3<br>
 Enables viewing of Aquanox source files
 
@@ -21,6 +25,5 @@ Version v1.2 changes:
  Notes:<br>
 Compiled binary will still trigger a small number of AVs on virustotal.<br>
 From what I can tell this is caused by some kind of analytics gathering included in the executable when built by the official Delphi IDE.<br>
-If this concerns you then I suggest building the Binary from source yourself using the official IDE (https://www.embarcadero.com/products/delphi/starter/free-download)<br>
-
-I also plan on recreating this tool in C# which should remove this issue.
+I suggest building the Binary from source yourself using the official IDE (https://www.embarcadero.com/products/delphi/starter/free-download)<br>
+Alternatively, a new tool with many more features is available which does not have this issue: https://github.com/PyroChiliarch/AquanoxRePAK
